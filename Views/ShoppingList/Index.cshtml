@@ -1,0 +1,53 @@
+﻿@model List<MVCCore6App.Models.ShoppingList>
+@{
+    Layout = "_Layout";
+}
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Your Shopping Lists</h2>
+            @if (User.Identity.IsAuthenticated)
+            {
+                @if (Model.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Is Completed</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var shoppingList in Model)
+                                {
+                                    <tr>
+                                        <td>@shoppingList.Name</td>
+                                        <td>
+                                            <input type="checkbox" name="listId" value="@shoppingList.Id" @(shoppingList.IsCompleted ? "checked" : "") />
+                                            <input type="hidden" name="completed" value="false" />
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-primary" asp-action="ToggleCompletionStatus" asp-controller="ShoppingList">Save Changes</button>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-secondary" asp-action="Create" asp-controller="ShoppingListItem" asp-route-id="@shoppingList.Id">Fill the list</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center">
+                        <p>You do not have any list created. Please create a list using the button below.</p>
+                        <a class="btn btn-primary" asp-action="Create" asp-controller="ShoppingList">Create list</a>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

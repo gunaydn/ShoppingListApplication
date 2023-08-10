@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+@if(!User.Identity.IsAuthenticated){
+    <div class="text-center">
+        <h2>Welcome to ShoppingList Application.</h2>
+    </div>
+    <div class="text-md-center">
+        <p class="card-text">To reach out the lists, you have to login!</p>
+        <p class="card-text">If you don't have any account, you can register!</p>
+        <div class="card" style="margin:20px">
+            <div class="card-body">
+                <p class="card-header">For User Register</p>
+                <p></p>
+                <a class="btn btn-primary" asp-action="Register" asp-controller="User">Register</a>
+                <p></p>
+                <p class="card-header">For User Login</p>
+                <p></p>
+                <a class="btn btn-primary" asp-action="Login" asp-controller="User">Login</a>
+            </div>
+        </div>
+        <hr />
+        <div class="card" style="margin:20px">
+            <div class="card-body">
+                <p class="card-header">For Admin Register</p>
+                <p></p>
+                <a class="btn btn-primary" asp-action="Register" asp-controller="Admin">Register</a>
+                <p></p>
+                <p class="card-header">For Admin Login</p>
+                <p></p>
+                <a class="btn btn-primary" asp-action="Login" asp-controller="Admin">Login</a>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="text-center">
+        <h2>Welcome, @User.Identity.Name</h2>
+        <p>Now, you can reach out to your lists.</p>
+        <p>Use the <a asp-action="Index" asp-controller="ShoppingList">Lists</a> to see your lists.</p>
+    </div>
+}
