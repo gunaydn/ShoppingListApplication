@@ -15,11 +15,11 @@ This is a web application built using ASP.NET Core 6. It allows users to create 
 1. Clone the repository to your local machine.
 2. Open the solution in Visual Studio or your preferred code editor.
 3. Open a terminal and navigate to the `MVCCore6App` directory.
-4. Run the following commands to apply database migrations:
-    dotnet ef update database
-5. Build and run the application:
-    dotnet build
-    dotnet run
+4. Run the following commands to apply database migrations: <br>
+    `dotnet ef update database`
+5. Build and run the application: <br>
+    `dotnet build` <br>
+    `dotnet run`
 6. Open a web browser and navigate to `http://localhost:5000` to access the application.
 
 ## Usage
